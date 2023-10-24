@@ -46,8 +46,6 @@ export default function useConfirmation() {
     return [promise, resolver];
   };
 
-  console.log({ dialogState });
-
   const getConfirmation = async ({
     offer = {},
     entity = "",
@@ -61,7 +59,6 @@ export default function useConfirmation() {
     setButtons(buttons);
     setOpenDefault(true);
     const [promise, resolve] = await createPromise();
-    console.log(promise, resolve);
     setResolver(() => resolve);
     return promise;
   };
@@ -87,7 +84,6 @@ export default function useConfirmation() {
   const handleConfirm = async (status) => {
     setDialogState((prev) => ({ ...prev, status: status }));
     setOpenMap(false);
-    //setOpenDefault(false);
     resolver(status);
   };
 
@@ -179,28 +175,8 @@ export default function useConfirmation() {
   );
 
   const ConfirmationDialog = () => {
-    /* 
-    let content = null;
-    switch (dialogState.status) {
-      case "map":
-        content = <MapContent />;
-        break;
-      default:
-        content = <DefaultContent />;
-    }
-    */
-
     return (
       <div>
-        {/* 
-        <Dialog
-          open={open}
-          fullWidth
-          maxWidth={dialogState.status === "map" ? "md" : "sm"}
-        >
-          {content}
-        </Dialog>
-        */}
         <DefaultContent />
         <MapContent />
       </div>

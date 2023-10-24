@@ -21,7 +21,7 @@ const DeleteWithUseConfirm = () => {
     if (status === "map") {
       console.log({ status });
     } else {
-      //  console.log({ status });
+      console.log({ status });
     }
   };
 
